@@ -12,7 +12,8 @@ test:
 
 test1:
 	
-	./tp2 -c $(CP) -i data.txt -o sortie	
+	for file in data/* ; do ./tp2 -c $(CP) -i $$file -o sortie; done ; cat sortie;
+
 
 clean:
 	
