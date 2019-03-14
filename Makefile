@@ -1,11 +1,19 @@
 CP= $(shell cat cp.txt)
 
+RAC=-Wall -pedantic -std=c99
+
+default:tp2
 
 
-default:tp2.c
-	gcc tp2.c -Wall -pedantic -std=c99 -o tp2  
 
-	
+outils.o: outils.h outils.c
+	gcc $(RAC) -c outils.c
+tp2.o: tp2.c
+	gcc $(RAC) -c tp2.c
+
+tp2: outils.o tp2.o
+	gcc $(RAC) -o tp2 tp2.o outils.o 
+
 
 test:
 	./tp2
