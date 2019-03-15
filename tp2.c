@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h> 
-#include <string.h>
+
 #include "outils.h"
 
 
@@ -15,8 +13,7 @@
 
  if (argc==3){
 verifierCP(argc,argv);
-unsigned long *tableau=LireEntree();
-rechercher(tableau);
+rechercher(LireEntree());
 }
 
 if (argc==5){
@@ -48,6 +45,9 @@ verifierCP(argc,argv);
 	    
 	}
 }
+
+
+
 }//Fin du main
 
 
