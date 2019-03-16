@@ -7,7 +7,7 @@
   int main(int argc, char * argv[]) {
 
     if (argc==1) {
-      printf("Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
+     // printf("Usage: %s <-c CODEpermanent> [-i fichier.in] [-o fichier.out] \n", argv[0]);
       return 1;
     }
 

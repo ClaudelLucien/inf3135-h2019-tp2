@@ -12,6 +12,6 @@ long long* LireEntree();
 void rechercheFichier(long long tableau[],char argv[]);
 void rechercher(long long tableau[]);
 int verifierCP(int argc, char * argv[]);
-int EstPremier(int nombre);
-int puiss(int x, unsigned int n );
+int EstPremier(unsigned long nombre);
+long long puiss(long long x, unsigned long n );
 #endif

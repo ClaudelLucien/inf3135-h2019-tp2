@@ -14,7 +14,7 @@ long long* LireFichier(int indice, char * argv[]){
 	fichier = fopen(argv[indice], "r+");
 	static long long tableau[2]={0};
 	if (fichier != NULL){
-	fscanf(fichier, "%lld%lld", & tableau[0], & tableau[1]);
+	if(fscanf(fichier, "%lld%lld", & tableau[0], & tableau[1])==0){
 	  if(tableau[1]<tableau[0]){
 	  long long a=tableau[1];
 	  tableau[1]=tableau[0];
@@ -23,6 +23,7 @@ long long* LireFichier(int indice, char * argv[]){
 	  else if(tableau[0]<0 || tableau[1]<0){
 	  exit(4);
 	  }
+	}
 	fclose(fichier);
 	}
 	else{ 
@@ -34,7 +35,7 @@ long long* LireFichier(int indice, char * argv[]){
 long long* LireEntree(){
 
 	static long long tableauval[2]= {0};
-	scanf("%lld%lld",& tableauval[0], & tableauval[1]);
+	if(scanf("%lld%lld",& tableauval[0], & tableauval[1])==0){
  	if(tableauval[1]<tableauval[0]){
   	  long long a=tableauval[1];
 	  tableauval[1]=tableauval[0];
@@ -43,7 +44,7 @@ long long* LireEntree(){
 	else if(tableauval[0]<0 || tableauval[1]<0){
           exit(4);
           }
-
+	  }
 	return tableauval;
 }
 
@@ -83,14 +84,14 @@ int verifierCP(int argc, char * argv[]){
 	return 0;
         }
 	else if (strcmp(argv[i], "-c") == 0 && strlen(argv[i + 1]) != 12) {
-        printf("pas12caract");
+        //printf("pas12caract");
          return 2;
         }
     }
 return 0;
 }
 
-int EstPremier(int nombre){
+int EstPremier(unsigned long nombre){
 
 	if(nombre ==1){
 	return 1;
@@ -98,7 +99,8 @@ int EstPremier(int nombre){
 	if(nombre==2){
 	return 0;
 	}
-		for (int i =2 ; i<=nombre-1;i++){
+	unsigned long rac_nombre=sqrt(nombre)+1;
+		for (unsigned long i =2 ; i<=rac_nombre-1;i++){
 			if (nombre%i==0){
 			return 1;
     			}
@@ -109,11 +111,11 @@ return 0;
 void rechercher(long long tableau[]){
 	long long borneInf = tableau[0];
         long long borneSup = tableau[1];
-	for(int i = borneInf ; i<=borneSup; i++){
+	for(long long i = borneInf ; i<=borneSup; i++){
 		if (EstPremier(i)==0){
-		int premier=puiss(2,(i-1))*(puiss(2,i)-1);
+		long long premier=puiss(2,(i-1))*(puiss(2,i)-1);
 			if(premier<borneSup){
-			printf("%d\n",premier);
+			printf("%lld\n",premier);
 			}
 			else{
 			break;
@@ -124,9 +126,9 @@ void rechercher(long long tableau[]){
 
 
 
-int puiss (int x, unsigned int n){
-   int y = 1;
-   unsigned int m = 1;
+long long puiss (long long x, unsigned long n){
+   long long y = 1;
+   unsigned long m = 1;
    while (m <= n) {
       y *= x;
       m++;
