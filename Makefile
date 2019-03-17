@@ -1,19 +1,19 @@
 CP= $(shell cat cp.txt)
 
-RAC=-Wall -pedantic -std=c99
+RAC=-Wall -pedantic -std=c99 -lm
 
 default:tp2
 
 
 outils.o: outils.h outils.c
-	@gcc $(RAC) -c outils.c -lm
+	@gcc $(RAC) -c outils.c
 
 tp2.o: tp2.c
-	@gcc $(RAC) -c tp2.c -lm
+	@gcc $(RAC) -c tp2.c
 
 
 tp2: outils.o tp2.o
-	@gcc $(RAC) -o tp2 tp2.o outils.o -lm
+	@gcc $(RAC) -o tp2 tp2.o outils.o
 
 test:
 
@@ -27,7 +27,7 @@ clean:
 	@rm -f resultat.txt
 data:
 	@wget -q  https://www.github.com/guyfrancoeur/INF3135_H2019/raw/master/tp1/data.zip
-	unzip data
+	unzip data.zip
 	mkdir data
 	mv data.txt ./data
 
@@ -36,5 +36,3 @@ resultat:
 	git add resultat.txt
 	git commit
 	git push
-
-

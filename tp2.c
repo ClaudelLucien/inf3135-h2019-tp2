@@ -1,4 +1,3 @@
-
 #include "outils.h"
 
 
@@ -49,5 +48,4 @@ verifierCP(argc,argv);
 
 
 }//Fin du main
-
 

@@ -14,7 +14,7 @@ compteur=0
 while read line
 do
 commande=${line:29}
-eval $commande
+eval $commande  &>/dev/null
 retour=$?
 
 retourprof=${line:5:1}
@@ -31,4 +31,5 @@ compteur=$((compteur+1))
 
 
 done < inf3135-h2019-tp2.correction
-echo "$note"
+echo "Note (total) pour CLAL12049707 dans inf3135-h2019-tp2: $note"
+echo "FIN."

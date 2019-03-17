@@ -45,6 +45,7 @@ long long* LireEntree(){
           exit(4);
           }
 	  }
+	//printf("%lld %lld",tableauval[0],tableauval[1]);
 	return tableauval;
 }
 
@@ -57,17 +58,21 @@ void rechercheFichier(long long tableau[], char argv[]){
 	long long borneSup = tableau[1];
         FILE * sortie = NULL;
         sortie = fopen(argv, "w+");
-        	for(int i = borneInf ; i<=borneSup; i++){
-                	if (EstPremier(i)==0){
-                  	int premier=puiss(2,(i-1))*(puiss(2,i)-1);
-                        	if(premier<borneSup){
-                        	fprintf(sortie,"%d\n",premier);
-                        	}
-                        	else{
-                        	break;
-                        	}
+      for(long long i = 2 ; i<=60; i++){
+
+                if (EstPremier(i)==0){
+
+                long long dep=puiss(2,i)-1;
+                if(EstPremier(dep)==0){
+                long long premier=puiss(2,(i-1))*(puiss(2,i)-1);
+                        if(premier<borneSup && premier>borneInf){
+                        fprintf(sortie,"%lld\n",premier);
                         }
-		}
+
+                        }
+                }
+        }
+
                 fclose(sortie);
 }
 
@@ -85,7 +90,7 @@ int verifierCP(int argc, char * argv[]){
         }
 	else if (strcmp(argv[i], "-c") == 0 && strlen(argv[i + 1]) != 12) {
         //printf("pas12caract");
-         return 2;
+         exit(2);
         }
     }
 return 0;
@@ -111,14 +116,18 @@ return 0;
 void rechercher(long long tableau[]){
 	long long borneInf = tableau[0];
         long long borneSup = tableau[1];
-	for(long long i = borneInf ; i<=borneSup; i++){
+	//for(long long i = borneInf ; i<=borneSup; i++){
+	for(long long i = 2 ; i<=60; i++){
+
 		if (EstPremier(i)==0){
+
+		long long dep=puiss(2,i)-1;
+		if(EstPremier(dep)==0){
 		long long premier=puiss(2,(i-1))*(puiss(2,i)-1);
-			if(premier<borneSup){
+			if(premier<borneSup && premier>borneInf){
 			printf("%lld\n",premier);
 			}
-			else{
-			break;
+		
 			}
 		}
 	}
